@@ -1,0 +1,26 @@
+server:
+  port: 8085
+spring:
+  datasource:
+    driver-class-name:  com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/huangguanren?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: root
+xxl:
+  job:
+    enabled: true
+    executor:
+      appname: health-executor
+      port: 9901 //客户端的端口，暴露给xxl-job的管理平台
+      logpath: ${user.home}/xxl-job/logs
+      logretentiondays: -1
+    admin:
+      addresses: http://localhost:8091/xxl-job-admin
+mybatis:
+  mapper-locations: classpath:mappering/*Mapper.xml
+  type-aliases-package: com.itheima.pojo
+logging:
+  level:
+    com:
+      example:
+        mapper: debug
